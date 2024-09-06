@@ -3,7 +3,7 @@ export default function Task({ task, importanceArr,
 }) {
 
     return (
-        <li className="task">
+        <li className="task" role="button" onClick={onTaskClicked}>
             <div>
                 <input type="checkbox" checked={task.isCompleted}
                     onChange={() => onToggleCompletedTask(taskID)} />
