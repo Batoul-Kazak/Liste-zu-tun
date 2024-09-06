@@ -6,8 +6,8 @@ import TaskDetailsEditMode from "./TaskDetailsEditMode/TaskDetailsEditMode";
 import { useState } from "react";
 
 const tasksArr = [
-    { id: Date.now(), isCompleted: false, name: "Task1", description: "dsjfnsjkdf", importance: 1, deadline: 1 / 2 / 3003, isOpenedEditMode: false },
-    { id: Date.now(), isCompleted: false, name: "Task2", description: "dsjkdf", importance: 3, deadline: 1 / 2 / 3033, isOpenedEditMode: false },
+    { id: Date.now(), isCompleted: false, name: "Task1", description: "dsjfnsjkdf", importance: 1, deadline: "1/2/3003", isOpenedEditMode: false },
+    { id: Date.now(), isCompleted: false, name: "Task2", description: "dsjkdf", importance: 3, deadline: "1/2/3033", isOpenedEditMode: false },
 ];
 
 export default function App() {
@@ -98,6 +98,31 @@ export default function App() {
         setHideAllModes(true);
     }
 
+    function handleTaskClicked(id) {
+        setShowEditMode(false);
+        setHideAllModes(false);
+
+        let importance_;
+        let deadline_;
+        let name_;
+        let description_;
+
+        tasks.map((t, i) => {
+            if (i === id) {
+                importance_ = t.importance;
+                deadline_ = t.deadline;
+                name_ = t.name;
+                description_ = t.description;
+            }
+        });
+
+        setEditName(name_);
+        setEditDeadLine(deadline_);
+        setEditDescription(description_);
+        setEditImportance(importance_);
+        // console.log(editName, editDeadLine, editDescription, editImportance)
+    }
+
     const importanceArr = [
         "⭐",
         "⭐⭐",
@@ -119,6 +144,7 @@ export default function App() {
                         onSetIsOpenedEditMode={setIsOpenedEditMode} isOpenedEditMode={isOpenedEditMode}
                         onToggleTaskEditMode={handleToggleTaskEditMode}
                         onToggleCompletedTask={handleToggleCompletedTask}
+                        onTaskClicked={handleTaskClicked}
                     />
                     <TasksDisplayController />
 
