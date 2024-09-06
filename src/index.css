@@ -1,0 +1,249 @@
+:root {
+    --color-lightest: #fff4e6;
+    --color-light: #ffe8cc;
+    --color-medium: #ffa94d;
+    --color-dark: #ff922b;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+button {
+    cursor: pointer;
+    transition: 250ms;
+}
+
+button:hover {
+    filter: brightness(130%);
+}
+
+.app-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+}
+
+.app {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 5rem;
+}
+
+.container-1 {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 35rem;
+    background-color: var(--color-light);
+}
+
+.insertion-form {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.insertion-form input {
+    padding: 10px;
+    border-radius: 1rem;
+    width: 65%;
+}
+
+.insertion-form button {
+    padding: 0.8rem;
+    font-weight: bold;
+    background-color: var(--color-dark);
+    color: white;
+    border-radius: 1rem;
+}
+
+.tasks-container {
+    width: 100%;
+}
+
+.tasks-container .task {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+    cursor: pointer;
+}
+
+.tasks-container .task:hover {
+    background-color: var(--color-lightest);
+}
+
+.tasks-container .task div {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
+}
+
+.tasks-container .task button {
+    border-radius: 1rem;
+    padding: 5px;
+    font-size: 1.3rem;
+}
+
+.tasks-container .task button:hover {
+    filter: brightness(80%);
+}
+
+.tasks-container .task input {
+    width: 1rem;
+    aspect-ratio: 1;
+    filter: invert(1);
+}
+
+.task-details-edit-mode,
+.task-details {
+    background-color: var(--color-light);
+    padding: 1rem;
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
+
+    margin-top: 5rem;
+}
+
+.task-details-edit-mode form,
+.task-details div {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 2rem;
+}
+
+.task-details-edit-mode form input,
+.task-details-edit-mode form select,
+.task-details-edit-mode form button {
+    padding: 10px;
+    border-radius: 1rem;
+}
+
+.task-details-edit-mode form div {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 1rem;
+}
+
+.task-details-edit-mode .info,
+.task-details .info {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+}
+
+.task-details-edit-mode .remaining-task,
+.task-details .remaining-task {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.task-details-edit-mode .finished-percentage,
+.task-details .finished-percentage {
+    color: green;
+}
+
+.task-details-edit-mode .remaining-task,
+.task-details .remaining-task {
+    color: darkred;
+}
+
+.task-details-edit-mode .details,
+.task-details .details {
+    place-self: start;
+    width: 100%;
+}
+
+.task-details-edit-mode .details textarea {
+    height: 5rem;
+    width: 100%;
+}
+
+.sub-tasks-container {
+    background-color: #ff9e5d;
+    display: flex;
+    flex-direction: column;
+    place-self: start;
+    width: 100%;
+}
+
+.sub-task {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    color: white;
+}
+
+.sub-task:hover {
+    background-color: #ffbb8e;
+    color: #222;
+}
+
+.sub-task input {
+    width: 1rem;
+    aspect-ratio: 1;
+    filter: invert(1);
+}
+
+.task-details {
+    padding: 2rem;
+}
+
+.task-details section {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+    width: 100%;
+}
+
+.task-details section button {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+}
+
+.task-details .details {
+    flex-direction: column;
+    gap: 0;
+}
+
+.task-details h3 {
+    place-self: start;
+}
+
+.task-details .description {
+    margin: 0;
+    width: 40rem;
+    text-align: justify;
+    color: #333;
+}
+
+/* .task-details .description  */
