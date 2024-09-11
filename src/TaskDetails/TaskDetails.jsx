@@ -2,7 +2,7 @@ import SubTask from "../TaskDetailsEditMode/components/SubTask"
 import { subTasksArr } from "../constants"
 
 export default function TaskDetails({ editName, editDescription,
-    editDeadline, editImportance, onDeleteTask, onSetShowEditMode }) {
+    editDeadLine, editImportance, onDeleteTask, onSetShowEditMode }) {
 
     return (
         <section className="task-details">
@@ -13,7 +13,7 @@ export default function TaskDetails({ editName, editDescription,
                 </div>
                 <h2>{editName}</h2>
                 <div>
-                    <p className="date">{!editDeadline ? "not specified deadline" : editDeadline}</p>
+                    <p className="date">{!editDeadLine ? "not specified deadline" : editDeadLine}</p>
                     <button onClick={() => onDeleteTask()}>🗑</button>
                 </div>
             </section>

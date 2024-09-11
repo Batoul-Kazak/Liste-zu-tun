@@ -72,6 +72,9 @@ export default function App() {
     function handleClearAllTasks() {
         const confirmed = window.confirm("Are you sure you want to clear all tasks?");
         setTasks((tasks) => []);
+
+        // setShowEditMode(false);
+        setHideAllModes(true);
     }
 
     function handleToggleTaskEditMode(taskID) {
@@ -153,7 +156,7 @@ export default function App() {
                     editName={editName} editDescription={editDescription}
                     editImportance={editImportance} editDeadLine={editDeadLine}
                     onDeleteTask={handleDeleteTask}
-                    onSetShowEditMode={setShowEditMode}
+                    onSetShowEditMode={handleToggleTaskEditMode}
                 />}
                 {!hideAllModes && showEditMode && <TaskDetailsEditMode importanceArr={importanceArr}
                     onSetEditName={setEditName} editName={editName}
