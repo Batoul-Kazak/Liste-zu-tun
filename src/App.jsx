@@ -6,8 +6,8 @@ import TaskDetailsEditMode from "./TaskDetailsEditMode/TaskDetailsEditMode";
 import { useState } from "react";
 
 const tasksArr = [
-    { id: Date.now(), isCompleted: false, name: "Task1", description: "dsjfnsjkdf", importance: 1, deadline: "1/2/3003", isOpenedEditMode: false },
-    { id: Date.now(), isCompleted: false, name: "Task2", description: "dsjkdf", importance: 3, deadline: "1/2/3033", isOpenedEditMode: false },
+    { id: Date.now(), isCompleted: false, name: "Task1", description: "cba", importance: 1, deadline: "1/2/3003", isOpenedEditMode: false },
+    { id: Date.now(), isCompleted: false, name: "Task2", description: "abc", importance: 3, deadline: "1/2/3033", isOpenedEditMode: false },
 ];
 
 export default function App() {
@@ -26,6 +26,9 @@ export default function App() {
     const [editDescription, setEditDescription] = useState("");
     const [editImportance, setEditImportance] = useState(1);
     const [editDeadLine, setEditDeadLine] = useState("");
+    const [sortBy, setSortBy] = useState("addedTime");
+
+    const [editedTasksByTime, setEditedTasksByTime] = useState(tasks);
 
     // this state is to render the editModeComponent
 
@@ -46,6 +49,7 @@ export default function App() {
         const id = crypto.randomUUID();
         const newTask = { id, isCompleted: false, name, description, importance, deadline, isOpenedEditMode: false };
         setTasks((tasks) => [...tasks, newTask]);
+        // setAddedTasksArr((tas))
         setName("");
         // setId(Date.now());
 
@@ -63,6 +67,8 @@ export default function App() {
         setTasks((tasks) => tasks.map((task) => task.isOpenedEditMode === true ?
             { ...task, name: editName, description: editDescription, importance: editImportance, deadline: editDeadLine }
             : task));
+
+        // setEditedTasksByTime((editedTasksByTime) => editedTasksByTime.slice().sort((a,b) => a.isOpenedEditMode === true ? [a, b]))
 
         setShowEditMode(false);
         console.log(editDeadLine, editName, editImportance, editDescription);
@@ -126,6 +132,18 @@ export default function App() {
         // console.log(editName, editDeadLine, editDescription, editImportance)
     }
 
+    // function handleSortedItems() {
+    let sortedItems;
+
+    if (sortBy === "deadLine") sortedItems = tasks;
+    if (sortBy === "importance") sortedItems = tasks.slice.sort((a, b) => Number(a.importance) - Number(b.importance));
+    if (sortBy === "description") sortedItems = tasks.slice().sort((a, b) => a.description.localeCompare(b.description));
+    if (sortBy === "editedTime") sortedItems = tasks;
+    if (sortBy === "addedTime") sortedItems = tasks;
+    if (sortBy === "completed") sortedItems = tasks;
+    // return sortedItems;
+    // }
+
     const importanceArr = [
         "⭐",
         "⭐⭐",
@@ -148,8 +166,10 @@ export default function App() {
                         onToggleTaskEditMode={handleToggleTaskEditMode}
                         onToggleCompletedTask={handleToggleCompletedTask}
                         onTaskClicked={handleTaskClicked}
+                        sortedItems={sortedItems}
                     />
-                    <TasksDisplayController />
+                    <TasksDisplayController onSetSortBy={setSortBy} sortBy={sortBy}
+                        setImportance={setImportance} importance={importance} />
 
                 </div>
                 {!hideAllModes && !showEditMode && <TaskDetails importanceArr={importanceArr}
@@ -157,6 +177,7 @@ export default function App() {
                     editImportance={editImportance} editDeadLine={editDeadLine}
                     onDeleteTask={handleDeleteTask}
                     onSetShowEditMode={handleToggleTaskEditMode}
+                    onSetEditImportance={setEditImportance}
                 />}
                 {!hideAllModes && showEditMode && <TaskDetailsEditMode importanceArr={importanceArr}
                     onSetEditName={setEditName} editName={editName}

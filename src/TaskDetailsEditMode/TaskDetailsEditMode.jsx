@@ -1,5 +1,6 @@
 import SubTask from "./components/SubTask"
 import { subTasksArr } from "../constants";
+import StarImportanceController from "./components/StarImportanceController";
 
 export default function TaskDetailsEditMode({ importanceArr,
     onSetEditName, editName, onSetEditDescription, editDescription,
@@ -20,11 +21,12 @@ export default function TaskDetailsEditMode({ importanceArr,
             <form onSubmit={(e) => onEditTaskInfo(e)}>
                 <div>
                     <button>save</button>
-                    <select value={editImportance === 1 ? "⭐" : editImportance === 2 ? "⭐⭐" : "⭐⭐⭐"} onChange={handleSetEditImportance}>
+                    {/* <select value={editImportance === 1 ? "⭐" : editImportance === 2 ? "⭐⭐" : "⭐⭐⭐"} onChange={handleSetEditImportance}>
                         {importanceArr.map((star, i) =>
                             <option value={star} key={i}>{star}</option>
                         )}
-                    </select>
+                    </select> */}
+                    <StarImportanceController onSetEditImportance={onSetEditImportance} editImportance={editImportance} />
                 </div>
                 <input type="text" placeholder="task name..." value={editName}
                     onChange={(e) => onSetEditName(e.target.value)} />

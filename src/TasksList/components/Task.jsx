@@ -1,3 +1,5 @@
+import StarImportanceDisplayer from "../../StarImportanceDisplayer"
+
 export default function Task({ task, importanceArr,
     onToggleTaskEditMode, taskID, onToggleCompletedTask, onTaskClicked
 }) {
@@ -12,7 +14,8 @@ export default function Task({ task, importanceArr,
 
             <div>
                 <p>{!task.deadline ? "not specified deadline" : task.deadline}</p>
-                <p>{importanceArr[task.importance - 1]}</p>
+                {/* <p>{importanceArr[task.importance - 1]}</p> */}
+                <StarImportanceDisplayer importance={task.importance} />
                 <button onClick={() => onToggleTaskEditMode(taskID)}>🖋</button>
             </div>
         </li>

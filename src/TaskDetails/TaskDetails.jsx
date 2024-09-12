@@ -1,15 +1,16 @@
 import SubTask from "../TaskDetailsEditMode/components/SubTask"
 import { subTasksArr } from "../constants"
+import StarImportanceDisplayer from "./components/StarImportanceDisplayer"
 
 export default function TaskDetails({ editName, editDescription,
-    editDeadLine, editImportance, onDeleteTask, onSetShowEditMode }) {
+    editDeadLine, editImportance, onDeleteTask, onSetShowEditMode, onSetEditImportance }) {
 
     return (
         <section className="task-details">
             <section>
                 <div>
                     <button onClick={() => onSetShowEditMode(true)}>🖋</button>
-                    <div>{editImportance === 1 ? "⭐" : editImportance === 2 ? "⭐⭐" : "⭐⭐⭐"}</div>
+                    <StarImportanceDisplayer editImportance={editImportance} />
                 </div>
                 <h2>{editName}</h2>
                 <div>
